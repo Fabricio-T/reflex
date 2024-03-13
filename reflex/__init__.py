@@ -138,6 +138,7 @@ _MAPPING = {
         "prevent_default",
         "redirect",
         "remove_cookie",
+        "get_all_cookies",
         "remove_local_storage",
         "set_clipboard",
         "set_focus",
