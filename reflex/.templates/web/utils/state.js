@@ -140,6 +140,14 @@ export const applyEvent = async (event, socket) => {
     return false;
   }
 
+  if (event.name == "_get_all_cookies") {
+    const allCookies = cookies.getAll();
+    console.log(allCookies);
+    // cookies.remove(event.payload.key, { ...event.payload.options });
+    queueEvents(initialEvents(), socket);
+    return false;
+  }
+
   if (event.name == "_clear_local_storage") {
     localStorage.clear();
     queueEvents(initialEvents(), socket);

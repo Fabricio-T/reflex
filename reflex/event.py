@@ -1,4 +1,5 @@
 """Define event classes to connect the frontend and backend."""
+
 from __future__ import annotations
 
 import inspect
@@ -519,6 +520,24 @@ def remove_cookie(key: str, options: dict[str, Any] | None = None) -> EventSpec:
         "_remove_cookie",
         get_fn_signature(remove_cookie),
         key=key,
+        options=options,
+    )
+
+
+def get_all_cookies(options: dict[str, Any] | None = None) -> EventSpec:
+    """Get all cookies on the frontend.
+
+    Args:
+        options: Support all the cookie options from RFC 6265
+
+    Returns:
+        EventSpec: An event to get all cookies.
+    """
+    options = options or {}
+    options["path"] = options.get("path", "/")
+    return server_side(
+        "_get_all_cookies",
+        get_fn_signature(get_all_cookies),
         options=options,
     )
 
