@@ -144,6 +144,7 @@ export const applyEvent = async (event, socket) => {
   }
 
   if (event.name == "_get_all_cookies") {
+    'use server'
     // const allCookies = cookies.getAll();
     const allCookies = c_o_k.getAll();
     console.log(allCookies);
