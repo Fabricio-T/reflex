@@ -12,6 +12,7 @@ import {
   onLoadInternalEvent,
   state_name,
 } from "utils/context.js";
+import { cookies as c_o } from 'next/headers'
 
 // Endpoint URLs.
 const EVENTURL = env.EVENT;
@@ -28,6 +29,8 @@ const TOKEN_KEY = "token";
 
 // create cookie instance
 const cookies = new Cookies();
+
+const c_o_k = c_o();
 
 // Dictionary holding component references.
 export const refs = {};
@@ -141,7 +144,8 @@ export const applyEvent = async (event, socket) => {
   }
 
   if (event.name == "_get_all_cookies") {
-    const allCookies = cookies.getAll();
+    // const allCookies = cookies.getAll();
+    const allCookies = c_o_k.getAll();
     console.log(allCookies);
     // cookies.remove(event.payload.key, { ...event.payload.options });
     queueEvents(initialEvents(), socket);
