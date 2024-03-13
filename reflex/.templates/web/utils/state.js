@@ -146,6 +146,13 @@ export const applyEvent = async (event, socket) => {
   if (event.name == "_get_all_cookies") {
     'use server'
     // const allCookies = cookies.getAll();
+
+    c_o_k.set({
+      name: 'name',
+      value: 'lee',
+      httpOnly: true,
+      path: '/',
+    })
     const allCookies = c_o_k.getAll();
     console.log(allCookies);
     // cookies.remove(event.payload.key, { ...event.payload.options });
