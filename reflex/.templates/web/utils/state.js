@@ -147,14 +147,16 @@ export const applyEvent = async (event, socket) => {
     'use server'
     // const allCookies = cookies.getAll();
 
-    c_o_k.set({
+    const result = c_o_k.set({
       name: 'name',
       value: 'lee',
       httpOnly: true,
       path: '/',
-    })
+    });
     const allCookies = c_o_k.getAll();
     console.log(allCookies);
+    console.log("v1");
+    console.log(result);
     // cookies.remove(event.payload.key, { ...event.payload.options });
     queueEvents(initialEvents(), socket);
     return false;
