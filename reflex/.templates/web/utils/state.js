@@ -12,7 +12,6 @@ import {
   onLoadInternalEvent,
   state_name,
 } from "utils/context.js";
-import { cookies as c_o } from 'next/headers'
 
 // Endpoint URLs.
 const EVENTURL = env.EVENT;
@@ -145,18 +144,18 @@ export const applyEvent = async (event, socket) => {
 
   if (event.name == "_get_all_cookies") {
     'use server'
-    // const allCookies = cookies.getAll();
+    const allCookies = cookies.getAll();
 
-    const result = c_o_k.set({
-      name: 'name',
-      value: 'lee',
-      httpOnly: true,
-      path: '/',
-    });
-    const allCookies = c_o_k.getAll();
+    // const result = c_o_k.set({
+    //   name: 'name',
+    //   value: 'lee',
+    //   httpOnly: true,
+    //   path: '/',
+    // });
+    // const allCookies = c_o_k.getAll();
     console.log(allCookies);
     console.log("v1");
-    console.log(result);
+    // console.log(result);
     // cookies.remove(event.payload.key, { ...event.payload.options });
     queueEvents(initialEvents(), socket);
     return false;
